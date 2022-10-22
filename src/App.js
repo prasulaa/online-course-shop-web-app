@@ -11,7 +11,7 @@ function App() {
       <Navbar isUserLogged={isUserLogged} />
       <Routes>
         <Route path="/" element={<div>not implemented</div>} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setIsUserLogged={setIsUserLogged} />} />
       </Routes>
     </BrowserRouter>
   );
