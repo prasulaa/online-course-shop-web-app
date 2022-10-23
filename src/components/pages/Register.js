@@ -3,33 +3,33 @@ import { Alert, Button, Grid, Paper, TextField, Typography } from "@mui/material
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RESTAPI_URL_LOGIN } from "../../properties";
+import { RESTAPI_URL_REGISTER } from "../../properties";
 
-export default function Login(props) {
+export default function Register(props) {
     const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
 
     const usernameField = React.createRef();
     const passwordField = React.createRef();
+    const passwordRepeatField = React.createRef();
 
-    const handleLogin = () => {
+    const handleRegister = () => {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', () => {
-            var response = JSON.parse(xhr.responseText);
-
-            if (xhr.status === 200) {
-                localStorage.setItem('token', 'Bearer ' + response.token);
-                props.setIsUserLogged(true);
-                navigate("/");
+            console.log(xhr.status);
+            if (xhr.status === 201) {
+                navigate("/login");
             } else {
+                var response = JSON.parse(xhr.responseText);
                 setErrorMsg(response.message);
             }
         });
-        xhr.open('POST', RESTAPI_URL_LOGIN);
+        xhr.open('POST', RESTAPI_URL_REGISTER);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             username: usernameField.current.value,
-            password: passwordField.current.value
+            password: passwordField.current.value,
+            passwordRepeat: passwordRepeatField.current.value
         }));
     }
 
@@ -57,7 +57,7 @@ export default function Login(props) {
                                     letterSpacing: '.2rem',
                                 }}
                             >
-                                Sign in
+                                Sign up
                             </Typography>
                         </Grid>
                         <Grid item>
@@ -73,8 +73,14 @@ export default function Login(props) {
                             </Box>
                         </Grid>
                         <Grid item>
-                            <Button onClick={handleLogin}>
-                                Login
+                            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+                                <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                <TextField label="Repeat password" type="password" variant="standard" inputRef={passwordRepeatField} />
+                            </Box>
+                        </Grid>
+                        <Grid item>
+                            <Button onClick={handleRegister}>
+                                Register
                             </Button>
                         </Grid>
                         {errorMsg === "" ? <></> :
