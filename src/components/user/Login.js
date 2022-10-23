@@ -3,7 +3,7 @@ import { Alert, Button, Grid, Paper, TextField, Typography } from "@mui/material
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RESTAPI_URL_LOGIN } from "../../properties";
+import { RESTAPI_URL } from "../../properties";
 
 export default function Login(props) {
     const [errorMsg, setErrorMsg] = useState("");
@@ -25,7 +25,7 @@ export default function Login(props) {
                 setErrorMsg(response.message);
             }
         });
-        xhr.open('POST', RESTAPI_URL_LOGIN);
+        xhr.open('POST', RESTAPI_URL + "/login");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             username: usernameField.current.value,

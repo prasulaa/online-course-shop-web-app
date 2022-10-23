@@ -3,7 +3,7 @@ import { Alert, Button, Grid, Paper, TextField, Typography } from "@mui/material
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RESTAPI_URL_REGISTER } from "../../properties";
+import { RESTAPI_URL } from "../../properties";
 
 export default function Register(props) {
     const [errorMsg, setErrorMsg] = useState("");
@@ -16,7 +16,6 @@ export default function Register(props) {
     const handleRegister = () => {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', () => {
-            console.log(xhr.status);
             if (xhr.status === 201) {
                 navigate("/login");
             } else {
@@ -24,7 +23,7 @@ export default function Register(props) {
                 setErrorMsg(response.message);
             }
         });
-        xhr.open('POST', RESTAPI_URL_REGISTER);
+        xhr.open('POST', RESTAPI_URL + "/register");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             username: usernameField.current.value,
