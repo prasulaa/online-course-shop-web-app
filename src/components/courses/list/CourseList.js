@@ -14,14 +14,14 @@ export default function CourseList(props) {
                 <Grid key={course.id} item>
                     <Link to={"/courses/" + course.id} style={{ textDecoration: 'none' }}>
                         <Card>
-                            <CardActionArea sx={{ width: 250, height: 250 }}>
+                            <CardActionArea sx={{ width: 270, height: 250 }}>
                                 <CardMedia
                                     component='img'
                                     src={'data:image/png;base64, ' + course.thumbnail}
                                     height='150'
                                 />
                                 <CardContent>
-                                    <Typography variant="h5">
+                                    <Typography variant="h5" noWrap>
                                         {course.title}
                                     </Typography>
                                     <Typography variant="body2" color="text.secondary">
