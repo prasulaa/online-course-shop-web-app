@@ -1,8 +1,6 @@
 import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
 import { Button, Dialog, Grid, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
-import { Stack } from "@mui/system";
 import { useEffect, useState } from "react";
-import { RESTAPI_URL } from "../../../properties";
 import CourseList from "./CourseList";
 import Filters from "./Filters";
 
@@ -48,7 +46,7 @@ export default function Main(props) {
                 setCourses(response);
             }
         });
-        xhr.open('GET', RESTAPI_URL + "/courses" + getCoursesParams());
+        xhr.open('GET', "/courses" + getCoursesParams());
         xhr.send();
     };
 
@@ -60,7 +58,7 @@ export default function Main(props) {
                 setCategories(response);
             }
         });
-        xhr.open('GET', RESTAPI_URL + "/categories");
+        xhr.open('GET', "/categories");
         xhr.send();
     }
 
@@ -78,12 +76,12 @@ export default function Main(props) {
     };
 
     const handleNextPage = () => {
-        setFilters({...filters, page: filters.page + 1})
+        setFilters({ ...filters, page: filters.page + 1 })
     }
 
     const handlePreviousPage = () => {
         if (filters.page - 1 > 0) {
-            setFilters({...filters, page: filters.page - 1})
+            setFilters({ ...filters, page: filters.page - 1 })
         }
     }
 
@@ -125,7 +123,7 @@ export default function Main(props) {
                     </Grid>
                     <Grid item>
                         <PageChooser
-                            page={filters.page} 
+                            page={filters.page}
                             handleNextPage={handleNextPage}
                             handlePreviousPage={handlePreviousPage}
                         />
