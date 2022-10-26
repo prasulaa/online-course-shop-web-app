@@ -19,7 +19,7 @@ export default function Navbar(props) {
                             <Grid container alignItems="center" spacing={1}>
                                 <Grid item>
                                     <Link to="/" style={{ textDecoration: 'none' }}>
-                                        <StoreIcon sx={{ mr: 1, color: 'common.white' }} />
+                                        <StoreIcon sx={{ mr: 1, color: 'common.white' }}/>
                                     </Link>
                                 </Grid>
                                 <Grid item>
