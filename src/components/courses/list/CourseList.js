@@ -10,29 +10,43 @@ export default function CourseList(props) {
             justifyContent='center'
             alignItems='center'
         >
-            {props.courses.map(course => (
-                <Grid key={course.id} item>
-                    <Link to={"/courses/" + course.id} style={{ textDecoration: 'none' }}>
-                        <Card>
-                            <CardActionArea sx={{ width: 270, height: 250 }}>
-                                <CardMedia
-                                    component='img'
-                                    src={'data:image/png;base64, ' + course.thumbnail}
-                                    height='150'
-                                />
-                                <CardContent>
-                                    <Typography variant="h5" noWrap>
-                                        {course.title}
-                                    </Typography>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {course.price + "zł"}
-                                    </Typography>
-                                </CardContent>
-                            </CardActionArea>
-                        </Card>
-                    </Link>
+            {props.courses.length === 0 ?
+                <Grid item>
+                    <Typography
+                        variant='h5'
+                        sx={{ mt: 4 }}
+                    >
+                        No courses found
+                    </Typography>
                 </Grid>
-            ))}
+                :
+                props.courses.map(course => (
+                    <Grid key={course.id} item>
+                        <Link
+                            to={"/courses/" + course.id + (props.urlSufix ? '/' + props.urlSufix : '')}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <Card>
+                                <CardActionArea sx={{ width: 270, height: 250 }}>
+                                    <CardMedia
+                                        component='img'
+                                        src={'data:image/png;base64, ' + course.thumbnail}
+                                        height='150'
+                                    />
+                                    <CardContent>
+                                        <Typography variant="h5" noWrap>
+                                            {course.title}
+                                        </Typography>
+                                        <Typography variant="body2" color="text.secondary">
+                                            {course.price + "zł"}
+                                        </Typography>
+                                    </CardContent>
+                                </CardActionArea>
+                            </Card>
+                        </Link>
+                    </Grid>
+                ))
+            }
         </Grid>
     );
 }

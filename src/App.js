@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import BoughtCourses from "./components/courses/list/BoughtCourses";
 import Main from "./components/courses/list/Main";
+import ReleasedCourses from "./components/courses/list/ReleasedCourses";
 import Navbar from "./components/Navbar";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
@@ -15,6 +17,8 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login setIsUserLogged={setIsUserLogged} />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/released" element={<ReleasedCourses />} />
+        <Route path="/bought" element={<BoughtCourses />} />
       </Routes>
     </BrowserRouter>
   );
