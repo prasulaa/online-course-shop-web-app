@@ -21,8 +21,9 @@ export default function ReleasedCourses(props) {
     
     return (
         <CourseList 
-            courses = {courses}
-            urlSufix = {'view'}
+            courses={courses}
+            urlSufix={'view'}
+            showNewButton={true}
         />
     );
 }

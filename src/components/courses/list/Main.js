@@ -131,7 +131,10 @@ export default function Main(props) {
                 </Grid>
             </Grid>
             <Grid item>
-                <CourseList courses={courses} />
+                <CourseList 
+                    courses={courses} 
+                    showPrice={true}
+                />
             </Grid>
         </Grid>
     );

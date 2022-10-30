@@ -21,8 +21,8 @@ export default function BoughtCourses(props) {
     
     return (
         <CourseList 
-            courses = {courses}
-            urlSufix = {'edit'}
+            courses={courses}
+            urlSufix={'edit'}
         />
     );
 }
