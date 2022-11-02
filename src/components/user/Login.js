@@ -17,7 +17,6 @@ export default function Login(props) {
             var response = JSON.parse(xhr.responseText);
 
             if (xhr.status === 200) {
-                localStorage.setItem('token', 'Bearer ' + response.token);
                 props.setIsUserLogged(true);
                 navigate("/");
             } else {

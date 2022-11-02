@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import CourseDetails from "./components/courses/details/CourseDetails";
 import BoughtCourses from "./components/courses/list/BoughtCourses";
 import Main from "./components/courses/list/Main";
 import ReleasedCourses from "./components/courses/list/ReleasedCourses";
@@ -19,6 +20,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/released" element={<ReleasedCourses />} />
         <Route path="/bought" element={<BoughtCourses />} />
+        <Route path="/courses/:id" element={<CourseDetails />} />
       </Routes>
     </BrowserRouter>
   );
