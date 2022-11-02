@@ -1,9 +1,11 @@
-import { Article, Book, ChevronRight, ExpandMore } from "@mui/icons-material";
+import { ChevronRight, ExpandMore } from "@mui/icons-material";
 import { TreeItem, TreeView } from "@mui/lab";
 import { Grid, Paper, Typography } from "@mui/material";
 
 
 export default function Content(props) {
+
+    const handleClick = props.handleClick ? props.handleClick : (sid, lid) => () => {};
 
     return (
         <Paper
@@ -30,6 +32,7 @@ export default function Content(props) {
                     <TreeView
                         defaultCollapseIcon={<ExpandMore />}
                         defaultExpandIcon={<ChevronRight />}
+                        sx={{ pr: 2 }}
                     >
                         {props.sections.map(section => (
                             <TreeItem
@@ -42,6 +45,7 @@ export default function Content(props) {
                                         key={'l' + lesson.id}
                                         nodeId={'l' + lesson.id}
                                         label={lesson.name}
+                                        onClick={handleClick(section.id, lesson.id)}
                                     />
                                 ))}
                             </TreeItem>

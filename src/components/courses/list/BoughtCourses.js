@@ -22,7 +22,7 @@ export default function BoughtCourses(props) {
     return (
         <CourseList 
             courses={courses}
-            urlSufix={'edit'}
+            urlSufix={'view'}
         />
     );
 }
