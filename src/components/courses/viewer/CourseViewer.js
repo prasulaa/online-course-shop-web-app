@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Content from "../details/Content";
 import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw';
+
+function Image(props) {
+    return <img {...props} style={{maxWidth: '100%'}} />
+}
 
 export default function CourseViewer(props) {
     const { id } = useParams();
@@ -72,7 +77,11 @@ export default function CourseViewer(props) {
                     square
                     sx={{ m: 1, p: 1 }}
                 >
-                    <ReactMarkdown children={viewedLesson.data} />
+                    <ReactMarkdown 
+                        children={viewedLesson.data} 
+                        components={{img: Image}}
+                        rehypePlugins={[rehypeRaw]}
+                    />
                 </Paper>
             </Grid>
             <Grid
