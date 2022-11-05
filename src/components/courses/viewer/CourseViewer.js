@@ -1,12 +1,19 @@
-import { Grid, Paper } from "@mui/material";
+import { Box, Button, Grid, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Content from "../details/Content";
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw';
+import { PermMedia } from "@mui/icons-material";
 
 function Image(props) {
-    return <img {...props} style={{maxWidth: '100%'}} />
+    return (
+        <img 
+            {...props} 
+            style={{ maxWidth: '100%' }} 
+            alt='Donwload failed'
+        />
+    );
 }
 
 export default function CourseViewer(props) {
@@ -25,7 +32,7 @@ export default function CourseViewer(props) {
     const [viewedLesson, setViewedLesson] = useState({
         id: null,
         name: '',
-        data: '# TEST '
+        data: ''
     });
 
     const getCourseDetails = () => {
@@ -59,16 +66,32 @@ export default function CourseViewer(props) {
             container
             direction={{ xs: 'column', lg: 'row' }}
         >
-            <Grid 
+            <Grid
                 item
                 sm={2}
+                container
+                direction='column'
             >
                 <Content
                     sections={course.sections}
                     handleClick={handleChangeLesson}
                 />
+                <Box sx={{ m: 1 }}>
+                    <Link
+                        to={'/courses/' + id + '/files'}
+                        style={{ textDecoration: 'none' }}
+                    >
+                        <Button
+                            variant='outlined'
+                            sx={{ p: 1, width: '100%' }}
+                            startIcon={<PermMedia />}
+                        >
+                            Course files
+                        </Button>
+                    </Link>
+                </Box>
             </Grid>
-            <Grid 
+            <Grid
                 item
                 sm={8}
             >
@@ -77,9 +100,9 @@ export default function CourseViewer(props) {
                     square
                     sx={{ m: 1, p: 1 }}
                 >
-                    <ReactMarkdown 
-                        children={viewedLesson.data} 
-                        components={{img: Image}}
+                    <ReactMarkdown
+                        children={viewedLesson.data}
+                        components={{ img: Image }}
                         rehypePlugins={[rehypeRaw]}
                     />
                 </Paper>

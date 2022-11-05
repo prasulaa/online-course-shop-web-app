@@ -1,5 +1,4 @@
-import { Card, CardMedia, Grid, Paper } from "@mui/material";
-import { Box } from "@mui/system";
+import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Content from "./Content";
