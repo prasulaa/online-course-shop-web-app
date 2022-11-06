@@ -1,6 +1,7 @@
 import { Search } from "@mui/icons-material";
 import { Box, Button, Checkbox, Divider, FormControl, Grid, InputLabel, List, ListItem, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import { useState } from "react";
+import CategoryChooser from "./CategoryChooser";
 
 export default function Filters(props) {
     const [filters, setFilters] = useState(props.filters);
@@ -69,7 +70,7 @@ export default function Filters(props) {
                 <Typography variant="h5">
                     Categories
                 </Typography>
-                <Categories
+                <CategoryChooser
                     checked={filters.categories}
                     categories={props.categories}
                     handleCategory={handleCategory}
@@ -105,41 +106,6 @@ export default function Filters(props) {
 
             </Grid>
         </Paper>
-    );
-}
-
-function Categories(props) {
-
-    return (
-        <List sx={{ width: '100%' }}>
-            {props.categories.map((category) => {
-                return (
-                    <Box key={category.id}>
-                        <ListItem
-                            secondaryAction={
-                                <Checkbox
-                                    checked={props.checked.includes(category.id)}
-                                    edge="end"
-                                    onChange={props.handleCategory(category)}
-                                />
-                            }
-                        >
-                            <Typography noWrap>
-                                {category.name}
-                            </Typography>
-                        </ListItem>
-                        {category.subcategories.length === 0 ? <></> :
-                            <Box sx={{ ml: 2 }}>
-                                <Categories
-                                    checked={props.checked}
-                                    categories={category.subcategories}
-                                    handleCategory={props.handleCategory}
-                                />
-                            </Box>}
-                    </Box>
-                )
-            })}
-        </List>
     );
 }
 

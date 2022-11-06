@@ -134,6 +134,7 @@ export default function Main(props) {
                 <CourseList 
                     courses={courses} 
                     showPrice={true}
+                    urlSufix='details'
                 />
             </Grid>
         </Grid>

@@ -34,14 +34,14 @@ export default function CourseList(props) {
                             sx={{ m: 1 }}
                         >
                             <Link
-                                to={"/courses/" + course.id + (props.urlSufix ? '/' + props.urlSufix : '')}
+                                to={"/courses/" + course.id + '/' + props.urlSufix}
                                 style={{ textDecoration: 'none' }}
                             >
                                 <Card>
                                     <CardActionArea sx={{ width: 270, height: 250 }}>
                                         <CardMedia
                                             component='img'
-                                            src={'data:image/png;base64, ' + course.thumbnail}
+                                            src={course.thumbnail}
                                             height='150'
                                         />
                                         <CardContent>

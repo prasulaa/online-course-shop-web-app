@@ -22,7 +22,7 @@ export default function Header(props) {
                     <Card>
                         <CardMedia
                             component='img'
-                            src={'data:image/png;base64, ' + props.thumbnail}
+                            src={props.thumbnail}
                             height='180'
                         />
                     </Card>
