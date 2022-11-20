@@ -1,9 +1,11 @@
-import { Add, Delete, FileUpload } from "@mui/icons-material";
-import { Alert, Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, FormControlLabel, FormLabel, Grid, IconButton, InputAdornment, InputLabel, List, ListItem, ListItemText, OutlinedInput, Paper, Radio, RadioGroup, TextField, Typography } from "@mui/material";
+import { FileUpload } from "@mui/icons-material";
+import { Alert, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CategoryChooser from "../list/CategoryChooser";
+import DifficultyChooser from "./DifficultyChooser";
+import CategoriesDialog from "./CategoriesDialog";
+import CourseScopes from "./CourseScopes";
 
 export default function CreateCourse(props) {
     const [state, setState] = useState({
@@ -226,7 +228,7 @@ export default function CreateCourse(props) {
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <CreateScopes
+                            <CourseScopes
                                 scopes={state.scopes}
                                 handleAddScope={handleAddScope}
                                 handleDeleteScope={handleDeleteScope}
@@ -236,7 +238,6 @@ export default function CreateCourse(props) {
                         <Grid item>
                             <TextField
                                 label="Description"
-                                type="password"
                                 multiline
                                 inputRef={descriptionRef}
                                 sx={{ width: '100%' }}
@@ -263,109 +264,5 @@ export default function CreateCourse(props) {
             </Grid>
             <Grid item xs={0} sm={1} md={2} />
         </Grid>
-    );
-}
-
-function CategoriesDialog(props) {
-
-    return (
-        <Dialog
-            open={props.open}
-            onClose={props.onClose}
-        >
-            <DialogTitle>Choose course categories</DialogTitle>
-            <DialogContent>
-                <CategoryChooser
-                    checked={props.checked}
-                    categories={props.categories}
-                    handleCategory={props.handleCategory}
-                />
-            </DialogContent>
-            <DialogActions>
-                <Button
-                    variant='contained'
-                    onClick={props.onClose}
-                >
-                    Choose
-                </Button>
-            </DialogActions>
-        </Dialog>
-    );
-}
-
-function CreateScopes(props) {
-
-    return (
-        <Grid
-            container
-            direction='column'
-        >
-            <Grid item>
-                <FormControl variant='outlined'>
-                    <InputLabel>Add scope</InputLabel>
-                    <OutlinedInput
-                        inputRef={props.scopeRef}
-                        type='text'
-                        label='Add scope'
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton onClick={props.handleAddScope}>
-                                    <Add />
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                    />
-                </FormControl>
-            </Grid>
-
-            <Grid item>
-                <List dense={true}>
-                    {props.scopes.map((scope, index) => (
-                        <ListItem key={index}
-                            secondaryAction={
-                                <IconButton onClick={props.handleDeleteScope(index)}>
-                                    <Delete />
-                                </IconButton>
-                            }
-                        >
-                            <ListItemText>
-                                {scope}
-                            </ListItemText>
-                        </ListItem>
-                    ))}
-                </List>
-            </Grid>
-        </Grid>
-    );
-}
-
-function DifficultyChooser(props) {
-    return (
-        <FormControl sx={{ width: '100%' }}>
-            <FormLabel>Difficulty</FormLabel>
-            <RadioGroup
-                row
-                onChange={props.handleChange}
-            >
-                <FormControlLabel
-                    value={0}
-                    control={<Radio />}
-                    label="Easy"
-                    labelPlacement="bottom"
-                />
-                <FormControlLabel
-                    value={1}
-                    control={<Radio />}
-                    label="Medium"
-                    labelPlacement="bottom"
-                />
-                <FormControlLabel
-                    value={2}
-                    control={<Radio />}
-                    label="Hard"
-                    labelPlacement="bottom"
-                />
-            </RadioGroup>
-        </FormControl>
     );
 }

@@ -39,6 +39,7 @@ export default function Content(props) {
                                 key={'s' + section.id}
                                 nodeId={'s' + section.id}
                                 label={section.name}
+                                onClick={handleClick(section.id, null)}
                             >
                                 {section.lessons.map(lesson => (
                                     <TreeItem
