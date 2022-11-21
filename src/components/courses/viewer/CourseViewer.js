@@ -48,6 +48,9 @@ export default function CourseViewer(props) {
     }
 
     const handleChangeLesson = (sectionId, lessonId) => () => {
+        if (lessonId === null) {
+            return;
+        }
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', () => {
             if (xhr.status === 200) {
@@ -64,11 +67,11 @@ export default function CourseViewer(props) {
     return (
         <Grid
             container
-            direction={{ xs: 'column', lg: 'row' }}
+            direction={{ xs: 'column', md: 'row' }}
         >
             <Grid
                 item
-                sm={2}
+                md={3} lg={2}
                 container
                 direction='column'
             >
@@ -93,7 +96,7 @@ export default function CourseViewer(props) {
             </Grid>
             <Grid
                 item
-                sm={8}
+                md={9} lg={10}
             >
                 <Paper
                     variant='outlined'
@@ -106,11 +109,6 @@ export default function CourseViewer(props) {
                         rehypePlugins={[rehypeRaw]}
                     />
                 </Paper>
-            </Grid>
-            <Grid
-                item
-                sm={2}
-            >
             </Grid>
         </Grid>
     );
