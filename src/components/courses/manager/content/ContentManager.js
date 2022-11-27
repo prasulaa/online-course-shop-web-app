@@ -64,7 +64,7 @@ export default function ContentManager(props) {
                     },
                     errorMsg: ""
                 })
-            } else if(xhr.status === 400) {
+            } else if (xhr.status === 400) {
                 setState({
                     ...state,
                     errorMsg: response.message
@@ -131,8 +131,14 @@ export default function ContentManager(props) {
                     {state.lessonId === null
                         ? state.sectionId === null
                             ? <></>
-                            : <SectionManager />
-                        : <LessonManager />
+                            : <SectionManager 
+                                sectionId={state.sectionId}
+                            />
+                        : <LessonManager
+                            sectionId={state.sectionId}
+                            lessonId={state.lessonId}
+                            onLessonNameChange={getCourseDetails}
+                        />
                     }
                 </Box>
             </Grid>
