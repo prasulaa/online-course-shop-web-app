@@ -32,10 +32,10 @@ export default function ContentManager(props) {
         xhr.addEventListener('load', () => {
             if (xhr.status === 200) {
                 var response = JSON.parse(xhr.responseText);
-                setState({
-                    ...state,
+                setState((prevState) => ({
+                    ...prevState,
                     course: response
-                })
+                }))
             }
         });
         xhr.open('GET', "/courses/" + id + "/details");
@@ -43,11 +43,11 @@ export default function ContentManager(props) {
     }
 
     const handleContentClick = (sid, lid) => () => {
-        setState({
-            ...state,
+        setState((prevState) => ({
+            ...prevState,
             sectionId: sid,
             lessonId: lid
-        })
+        }))
     }
 
     const handleAddSection = () => {
@@ -89,8 +89,9 @@ export default function ContentManager(props) {
         <Grid
             container
             direction={{ xs: 'column', md: 'row' }}
+            sx={{ width: '100vw' }}
         >
-            <Grid item md={3} lg={2}>
+            <Grid item md={3} lg={2} zeroMinWidth sx={{ width: '100%' }}>
                 <Content
                     sections={state.course.sections}
                     handleClick={handleContentClick}
@@ -126,13 +127,15 @@ export default function ContentManager(props) {
                     </Alert>
                 }
             </Grid>
-            <Grid item md={9} lg={10} >
+            <Grid item md={9} lg={10} zeroMinWidth sx={{ width: '100%' }}>
                 <Box sx={{ m: 1 }}>
                     {state.lessonId === null
                         ? state.sectionId === null
                             ? <></>
                             : <SectionManager 
                                 sectionId={state.sectionId}
+                                onContentChange={getCourseDetails}
+                                onSectionDelete={handleContentClick(null, null)}
                             />
                         : <LessonManager
                             sectionId={state.sectionId}

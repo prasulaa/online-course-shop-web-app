@@ -28,7 +28,7 @@ export default function Content(props) {
                     </Typography>
                 </Grid>
 
-                <Grid item>
+                <Grid item sx={{ width: '100%' }}>
                     <TreeView
                         defaultCollapseIcon={<ExpandMore />}
                         defaultExpandIcon={<ChevronRight />}
@@ -38,14 +38,14 @@ export default function Content(props) {
                             <TreeItem
                                 key={'s' + section.id}
                                 nodeId={'s' + section.id}
-                                label={section.name}
+                                label={<Typography noWrap>{section.name}</Typography>}
                                 onClick={handleClick(section.id, null)}
                             >
                                 {section.lessons.map(lesson => (
                                     <TreeItem
                                         key={'l' + lesson.id}
                                         nodeId={'l' + lesson.id}
-                                        label={lesson.name}
+                                        label={<Typography noWrap>{lesson.name}</Typography>}
                                         onClick={handleClick(section.id, lesson.id)}
                                     />
                                 ))}
