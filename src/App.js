@@ -5,6 +5,7 @@ import BoughtCourses from "./components/courses/list/BoughtCourses";
 import Main from "./components/courses/list/Main";
 import ReleasedCourses from "./components/courses/list/ReleasedCourses";
 import ContentManager from "./components/courses/manager/content/ContentManager";
+import FileManager from "./components/courses/manager/content/FileManager";
 import CourseManager from "./components/courses/manager/CourseManager";
 import CreateCourse from "./components/courses/manager/CreateCourse";
 import CourseFiles from "./components/courses/viewer/CourseFiles";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/courses/create" element={<CreateCourse />} />
         <Route path="/courses/:id/edit" element={<CourseManager />} />
         <Route path="/courses/:id/edit/content" element={<ContentManager />} />
+        <Route path="/courses/:id/edit/files" element={<FileManager />} />
       </Routes>
     </BrowserRouter>
   );

@@ -316,10 +316,23 @@ export default function CourseManager(props) {
                                             onChange={() => {
                                                 setState({ ...state, edit: !state.edit })
                                             }}
-                                            sx={{ height: 40, width: 80 }}
+                                            sx={{ height: 40, width: 90 }}
                                         >
                                             <Edit />
                                         </ToggleButton>
+                                    </Grid>
+                                    <Grid item>
+                                        <Link 
+                                            to={"/courses/" + id + "/edit/files"} 
+                                            style={{textDecoration: 'none'}}
+                                        >
+                                        <Button
+                                            variant='contained'
+                                            sx={{ height: 40, width: 90 }}
+                                        >
+                                            Files
+                                        </Button>
+                                        </Link>
                                     </Grid>
                                     <Grid item>
                                         <Link 
@@ -328,7 +341,7 @@ export default function CourseManager(props) {
                                         >
                                         <Button
                                             variant='contained'
-                                            sx={{ height: 40, width: 80 }}
+                                            sx={{ height: 40, width: 90 }}
                                         >
                                             Content
                                         </Button>
@@ -338,7 +351,7 @@ export default function CourseManager(props) {
                                         <Button
                                             variant='contained'
                                             color="error"
-                                            sx={{ height: 40, width: 80 }}
+                                            sx={{ height: 40, width: 90 }}
                                             onClick={handleOpenDeleteDialog}
                                             disabled={!state.edit}
                                         >
