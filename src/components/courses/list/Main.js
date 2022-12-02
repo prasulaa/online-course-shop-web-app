@@ -91,51 +91,67 @@ export default function Main(props) {
     return (
         <Grid
             container
-            direction="column"
-            alignItems="center"
-            justifyContent="center"
-            sx={{ width: "100%", m: 0 }}
-            spacing={1}
+            direction='row'
         >
-            <FiltersDialog
-                filters={filters}
-                categories={categories}
-                handleFilters={handleFilters}
-                open={filtersOpen}
-                onClose={handleCloseFilters}
-            />
-            <Grid item>
+            <Grid item display={{ xs: 'none', md: 'block' }} md={3} xl={2}>
+                <Filters
+                    filters={filters}
+                    categories={categories}
+                    handleFilters={handleFilters}
+                />
+            </Grid>
+
+
+            <Grid item md={9} xl={10}>
                 <Grid
                     container
-                    direction="row"
+                    direction="column"
                     alignItems="center"
-                    justifyContent="space-evenly"
-                    sx={{ width: '95vw', maxWidth: '500px' }}
+                    justifyContent="center"
+                    sx={{}}
+                    spacing={1}
                 >
+                    <FiltersDialog
+                        filters={filters}
+                        categories={categories}
+                        handleFilters={handleFilters}
+                        open={filtersOpen}
+                        onClose={handleCloseFilters}
+                    />
                     <Grid item>
-                        <Button
-                            variant='contained'
-                            onClick={handleOpenFilters}
-                            sx={{ width: '120px', mr: 2 }}
+                        <Grid
+                            container
+                            direction="row"
+                            alignItems="center"
+                            justifyContent="space-evenly"
+                            sx={{ width: '95vw', maxWidth: '500px' }}
                         >
-                            Filters
-                        </Button>
+                            <Grid item display={{ xs: 'block', md: 'none' }}>
+                                <Button
+                                    variant='contained'
+                                    onClick={handleOpenFilters}
+                                    sx={{ width: '120px', mr: 2 }}
+                                >
+                                    Filters
+                                </Button>
+                            </Grid>
+                            <Grid item>
+                                <PageChooser
+                                    page={filters.page}
+                                    handleNextPage={handleNextPage}
+                                    handlePreviousPage={handlePreviousPage}
+                                />
+                            </Grid>
+                        </Grid>
                     </Grid>
                     <Grid item>
-                        <PageChooser
-                            page={filters.page}
-                            handleNextPage={handleNextPage}
-                            handlePreviousPage={handlePreviousPage}
+                        <CourseList
+                            courses={courses}
+                            showPrice={true}
+                            urlSufix='details'
                         />
                     </Grid>
                 </Grid>
-            </Grid>
-            <Grid item>
-                <CourseList 
-                    courses={courses} 
-                    showPrice={true}
-                    urlSufix='details'
-                />
             </Grid>
         </Grid>
     );

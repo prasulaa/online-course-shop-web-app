@@ -47,7 +47,7 @@ export default function Filters(props) {
     }
 
     return (
-        <Paper sx={{ p: 1 }}>
+        <Paper sx={{ p: 1, m: 1 }}>
             <Grid
                 container
                 direction="column"

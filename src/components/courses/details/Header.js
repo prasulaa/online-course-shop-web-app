@@ -1,9 +1,47 @@
 import { Button, Card, CardMedia, Grid, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 
 export default function Header(props) {
+    const [owned, setOwned] = useState(false);
+
+    const checkIfCourseIsOwned= (type) => {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', () => {
+            if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                if (response.find((course) => course.id === props.id)) {
+                    setOwned(true);
+                }
+            }
+        });
+        xhr.open('GET', "/courses/" + type);
+        xhr.send();
+    }
+
+    const handleBuyCourse = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', () => {
+            if (xhr.status === 204) {
+                setOwned(true);
+            } else if (xhr.status === 200) {
+                var response = JSON.parse(xhr.responseText);
+                window.open(response.redirectUri);
+                setOwned(true);
+            }
+        });
+        xhr.open('POST', "/courses/" + props.id + "/buy");
+        xhr.send();
+    }
+
+    const checkOwnedStatus = () => {
+        checkIfCourseIsOwned('bought');
+        checkIfCourseIsOwned('released');
+    }
+
+    useEffect(checkOwnedStatus, [props]);
 
     return (
         <Paper
@@ -70,9 +108,13 @@ export default function Header(props) {
                                     </Typography>
                                 </Grid>
                                 <Grid item>
-                                    <Link to={'/courses/' + props.id + '/buy'} style={{ textDecoration: 'none' }}>
-                                        <Button variant="contained">Buy</Button>
-                                    </Link>
+                                    <Button 
+                                        variant="contained"
+                                        disabled={owned}
+                                        onClick={handleBuyCourse}
+                                    >
+                                        Buy
+                                    </Button>
                                 </Grid>
                             </Grid>
                         </Grid>
