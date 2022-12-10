@@ -1,8 +1,21 @@
 import { AppBar, Box, Button, Grid, Toolbar, Typography } from "@mui/material";
 import StoreIcon from '@mui/icons-material/Store';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar(props) {
+    const navigate = useNavigate();
+
+    const handleLogoutClick = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', () => {
+            if (xhr.status === 204) {
+                props.setIsUserLogged(false);
+                navigate("/");
+            }
+        });
+        xhr.open('POST', "/logout");
+        xhr.send();
+    }
 
     return (
         <Box sx={{ flexGrow: 1, pb: 1 }}>
@@ -50,6 +63,7 @@ export default function Navbar(props) {
                                 <Link to="/bought" style={{ textDecoration: 'none' }}>
                                     <Button sx={{ color: 'common.white' }}>Bought</Button>
                                 </Link>
+                                <Button sx={{ color: 'common.white' }} onClick={handleLogoutClick}>Logout</Button>
                             </Grid>
                             :
                             <Grid item>

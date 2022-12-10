@@ -137,10 +137,7 @@ export default function CreateCourse(props) {
         reader.readAsDataURL(file);
     }
 
-
     useEffect(getCategories, []);
-
-    console.log(state);
 
     return (
         <Grid

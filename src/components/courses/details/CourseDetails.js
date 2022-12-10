@@ -61,6 +61,7 @@ export default function CourseDetails(props) {
                         difficulty={course.difficulty}
                         categories={course.categories}
                         price={course.price}
+                        isUserLogged={props.isUserLogged}
                     />
                 </Grid>
 
