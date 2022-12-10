@@ -11,7 +11,7 @@ export default function LessonManager(props) {
         lesson: {
             id: null,
             name: "",
-            data: ""
+            data: null
         },
         errorMsg: "",
         successMsg: ""
@@ -207,7 +207,7 @@ export default function LessonManager(props) {
                 </Grid>
             }
 
-            {state.lesson.data === "" ?
+            {state.lesson.data === null ?
                 <></> :
                 <Grid item>
                     <MDEditor
