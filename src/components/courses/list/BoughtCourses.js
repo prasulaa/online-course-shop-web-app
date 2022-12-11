@@ -5,7 +5,7 @@ import CourseList from "./CourseList";
 export default function BoughtCourses(props) {
     const [courses, setCourses] = useState([]);
 
-    const getReleasedCourses = () => {
+    const getBoughtCourses = () => {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', () => {
             if (xhr.status === 200) {
@@ -17,7 +17,7 @@ export default function BoughtCourses(props) {
         xhr.send();
     }
     
-    useEffect(getReleasedCourses, []);
+    useEffect(getBoughtCourses, []);
     
     return (
         <CourseList 

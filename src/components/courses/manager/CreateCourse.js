@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DifficultyChooser from "./DifficultyChooser";
-import CategoriesDialog from "./CategoriesDialog";
+import CategoriesDialog from "./dialog/CategoriesDialog";
 import CourseScopes from "./CourseScopes";
 
 export default function CreateCourse(props) {

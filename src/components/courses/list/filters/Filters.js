@@ -2,6 +2,9 @@ import { Search } from "@mui/icons-material";
 import { Box, Button, Checkbox, Divider, FormControl, Grid, InputLabel, List, ListItem, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import CategoryChooser from "./CategoryChooser";
+import Difficulties from "./Difficulties";
+import PriceFilter from "./PriceFilter";
+import SortSelect from "./SortSelect";
 
 export default function Filters(props) {
     const [filters, setFilters] = useState(props.filters);
@@ -106,80 +109,5 @@ export default function Filters(props) {
 
             </Grid>
         </Paper>
-    );
-}
-
-function Difficulties(props) {
-    return (
-        <List sx={{ width: '100%' }}>
-            {[{ id: 0, name: "Easy" }, { id: 1, name: "Medium" }, { id: 2, name: "Hard" }].map((dif) => {
-                return (
-                    <ListItem
-                        key={dif.id}
-                        secondaryAction={
-                            <Checkbox
-                                checked={props.checked.includes(dif.id)}
-                                edge="end"
-                                onChange={props.handleDifficulty(dif)}
-                            />
-                        }>
-                        <Typography noWrap>
-                            {dif.name}
-                        </Typography>
-                    </ListItem>
-                )
-            })}
-        </List>
-    );
-}
-
-function PriceFilter(props) {
-    return (
-        <Box>
-            <TextField
-                id="outlined-number"
-                label="Price min"
-                type="number"
-                sx={{ m: 1 }}
-                onChange={props.handlePriceMin}
-                value={props.priceMin}
-                InputLabelProps={{
-                    shrink: true,
-                }}
-                InputProps={{
-                    inputProps: { min: 0 }
-                }}
-            />
-            <TextField
-                id="outlined-number"
-                label="Price max"
-                type="number"
-                sx={{ m: 1 }}
-                onChange={props.handlePriceMax}
-                value={props.priceMax}
-                InputLabelProps={{
-                    shrink: true,
-                }}
-                InputProps={{
-                    inputProps: { min: 0 }
-                }}
-            />
-        </Box>
-    );
-}
-
-function SortSelect(props) {
-    return (
-        <FormControl>
-            <InputLabel>Sort</InputLabel>
-            <Select
-                value={props.value}
-                label="Sort"
-                onChange={props.handleSort}
-            >
-                <MenuItem value={"ASC"}>Price ascending</MenuItem>
-                <MenuItem value={"DESC"}>Price descending</MenuItem>
-            </Select>
-        </FormControl>
     );
 }

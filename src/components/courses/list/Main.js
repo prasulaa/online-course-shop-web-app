@@ -2,7 +2,7 @@ import { ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
 import { Button, Dialog, Grid, IconButton, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import CourseList from "./CourseList";
-import Filters from "./Filters";
+import Filters from "./filters/Filters";
 
 export default function Main(props) {
     const [courses, setCourses] = useState([]);

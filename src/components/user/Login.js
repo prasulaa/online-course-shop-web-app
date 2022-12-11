@@ -1,4 +1,4 @@
-import { AccountCircle } from "@mui/icons-material";
+import { AccountCircle, Lock } from "@mui/icons-material";
 import { Alert, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
@@ -66,7 +66,7 @@ export default function Login(props) {
                         </Grid>
                         <Grid item>
                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
                                 <TextField label="Password" type="password" variant="standard" inputRef={passwordField} />
                             </Box>
                         </Grid>

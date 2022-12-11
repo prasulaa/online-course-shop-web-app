@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import CourseDetails from "./components/courses/details/CourseDetails";
 import BoughtCourses from "./components/courses/list/BoughtCourses";
 import Main from "./components/courses/list/Main";

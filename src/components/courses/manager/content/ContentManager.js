@@ -83,6 +83,13 @@ export default function ContentManager(props) {
         }));
     }
 
+    const handleCloseErrorAlert = () => {
+        setState((prevState) => ({
+            ...prevState,
+            errorMsg: ""
+        }));
+    }
+
     useEffect(getCourseDetails, []);
 
     return (
@@ -122,6 +129,7 @@ export default function ContentManager(props) {
                         variant="outlined"
                         severity="error"
                         sx={{ m: 1 }}
+                        onClose={handleCloseErrorAlert}
                     >
                         {state.errorMsg}
                     </Alert>

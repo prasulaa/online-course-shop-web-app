@@ -1,5 +1,5 @@
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button } from "@mui/material";
-import CategoryChooser from '../list/CategoryChooser'
+import CategoryChooser from "../../list/filters/CategoryChooser";
 
 export default function CategoriesDialog(props) {
 
