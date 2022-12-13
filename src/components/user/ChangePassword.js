@@ -1,35 +1,41 @@
-import { AccountCircle, AlternateEmail, Lock } from "@mui/icons-material";
+import { AccountCircle, AlternateEmail, Lock, LockOpen } from "@mui/icons-material";
 import { Alert, Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-export default function Register(props) {
-    const [errorMsg, setErrorMsg] = useState("");
-    const navigate = useNavigate();
 
-    const usernameField = React.createRef();
-    const emailField = React.createRef();
-    const passwordField = React.createRef();
-    const passwordRepeatField = React.createRef();
+export default function ChangePassword(props) {
+    const [state, setState] = useState({
+        errorMsg: '',
+        successMsg: ''
+    });
 
-    const handleRegister = () => {
+    const oldPasswordField = React.createRef();
+    const newPasswordField = React.createRef();
+    const newPasswordRepeatField = React.createRef();
+
+    const handleResetPassword = () => {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', () => {
-            if (xhr.status === 201) {
-                navigate("/login");
-            } else {
+            if (xhr.status === 204) {
+                setState((prevState) => ({
+                    ...prevState,
+                    successMsg: "Password has been changed",
+                    errorMsg: ""
+                }));
+            } else if (xhr.status === 400) {
                 var response = JSON.parse(xhr.responseText);
-                setErrorMsg(response.message);
+                setState((prevState) => ({ ...prevState, errorMsg: response.message, successMsg: "" }));
+            } else {
+                setState((prevState) => ({ ...prevState, errorMsg: "Unexpected error occurred", successMsg: "" }));
             }
         });
-        xhr.open('POST', "/register");
+        xhr.open('POST', "/user/password/change");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
-            username: usernameField.current.value,
-            email: emailField.current.value,
-            password: passwordField.current.value,
-            passwordRepeat: passwordRepeatField.current.value
+            oldPassword: oldPasswordField.current.value,
+            newPassword: newPasswordField.current.value,
+            newPasswordRepeat: newPasswordRepeatField.current.value
         }));
     }
 
@@ -54,45 +60,46 @@ export default function Register(props) {
                                 sx={{
                                     fontFamily: 'monospace',
                                     fontWeight: 700,
-                                    letterSpacing: '.2rem',
+                                    letterSpacing: '.1rem',
                                 }}
                             >
-                                Sign up
+                                Change password
                             </Typography>
                         </Grid>
                         <Grid item>
                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                <TextField label="Username" variant="standard" inputRef={usernameField} />
-                            </Box>
-                        </Grid>
-                        <Grid item>
-                            <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                <AlternateEmail sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                <TextField label="Email" variant="standard" inputRef={emailField} />
+                                <LockOpen sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                <TextField label="Old password" type="password" variant="standard" inputRef={oldPasswordField} />
                             </Box>
                         </Grid>
                         <Grid item>
                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                 <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                <TextField label="Password" type="password" variant="standard" inputRef={passwordField} />
+                                <TextField label="New password" type="password" variant="standard" inputRef={newPasswordField} />
                             </Box>
                         </Grid>
                         <Grid item>
                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
                                 <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-                                <TextField label="Repeat password" type="password" variant="standard" inputRef={passwordRepeatField} />
+                                <TextField label="New password repeat" type="password" variant="standard" inputRef={newPasswordRepeatField} />
                             </Box>
                         </Grid>
                         <Grid item>
-                            <Button onClick={handleRegister} variant='outlined' sx={{ width: '220px' }}>
-                                Register
+                            <Button onClick={handleResetPassword} variant='outlined' sx={{ width: '220px' }}>
+                                Change
                             </Button>
                         </Grid>
-                        {errorMsg === "" ? <></> :
+                        {state.successMsg === "" ? <></> :
+                            <Grid item>
+                                <Alert variant="outlined" severity="success">
+                                    {state.successMsg}
+                                </Alert>
+                            </Grid>
+                        }
+                        {state.errorMsg === "" ? <></> :
                             <Grid item>
                                 <Alert variant="outlined" severity="error">
-                                    {errorMsg}
+                                    {state.errorMsg}
                                 </Alert>
                             </Grid>
                         }

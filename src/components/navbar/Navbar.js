@@ -1,21 +1,10 @@
 import { AppBar, Box, Button, Grid, Toolbar, Typography } from "@mui/material";
 import StoreIcon from '@mui/icons-material/Store';
 import { Link, useNavigate } from "react-router-dom";
+import AccountMenu from "./AccountMenu";
 
 export default function Navbar(props) {
-    const navigate = useNavigate();
 
-    const handleLogoutClick = () => {
-        var xhr = new XMLHttpRequest();
-        xhr.addEventListener('load', () => {
-            if (xhr.status === 204) {
-                props.setIsUserLogged(false);
-                navigate("/");
-            }
-        });
-        xhr.open('POST', "/logout");
-        xhr.send();
-    }
 
     return (
         <Box sx={{ flexGrow: 1, pb: 1 }}>
@@ -32,7 +21,7 @@ export default function Navbar(props) {
                             <Grid container alignItems="center" spacing={1}>
                                 <Grid item>
                                     <Link to="/" style={{ textDecoration: 'none' }}>
-                                        <StoreIcon sx={{ mr: 1, color: 'common.white' }}/>
+                                        <StoreIcon sx={{ mr: 1, color: 'common.white' }} />
                                     </Link>
                                 </Grid>
                                 <Grid item>
@@ -57,13 +46,21 @@ export default function Navbar(props) {
                         </Grid>
                         {props.isUserLogged ?
                             <Grid item>
-                                <Link to="/released" style={{ textDecoration: 'none' }}>
-                                    <Button sx={{ color: 'common.white' }}>Released</Button>
-                                </Link>
-                                <Link to="/bought" style={{ textDecoration: 'none' }}>
-                                    <Button sx={{ color: 'common.white' }}>Bought</Button>
-                                </Link>
-                                <Button sx={{ color: 'common.white' }} onClick={handleLogoutClick}>Logout</Button>
+                                <Grid container>
+                                    <Grid item>
+                                        <Link to="/released" style={{ textDecoration: 'none' }}>
+                                            <Button sx={{ color: 'common.white' }}>Released</Button>
+                                        </Link>
+                                    </Grid>
+                                    <Grid item>
+                                        <Link to="/bought" style={{ textDecoration: 'none' }}>
+                                            <Button sx={{ color: 'common.white' }}>Bought</Button>
+                                        </Link>
+                                    </Grid>
+                                    <Grid item>
+                                        <AccountMenu setIsUserLogged={props.setIsUserLogged} />
+                                    </Grid>
+                                </Grid>
                             </Grid>
                             :
                             <Grid item>

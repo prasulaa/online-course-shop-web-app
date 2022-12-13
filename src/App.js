@@ -10,7 +10,8 @@ import CourseManager from "./components/courses/manager/CourseManager";
 import CreateCourse from "./components/courses/manager/CreateCourse";
 import CourseFiles from "./components/courses/viewer/CourseFiles";
 import CourseViewer from "./components/courses/viewer/CourseViewer";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
+import ChangePassword from "./components/user/ChangePassword";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
 
@@ -36,6 +37,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/released" element={<ReleasedCourses />} />
         <Route path="/bought" element={<BoughtCourses />} />
+        <Route path="/profile/changepassword" element={<ChangePassword />} />
         <Route path="/courses/:id/details" element={<CourseDetails isUserLogged={isUserLogged} />} />
         <Route path="/courses/:id/view" element={<CourseViewer />} />
         <Route path="/courses/:id/files" element={<CourseFiles />} />
