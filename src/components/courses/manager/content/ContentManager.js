@@ -117,7 +117,7 @@ export default function ContentManager(props) {
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton onClick={handleAddSection}>
-                                        <Add />
+                                        <Add sx={{ color: theme => theme.palette.text.secondary }}/>
                                     </IconButton>
                                 </InputAdornment>
                             }
@@ -126,7 +126,7 @@ export default function ContentManager(props) {
                 </Box>
                 {state.errorMsg === "" ? <></> :
                     <Alert
-                        variant="outlined"
+                        variant="filled"
                         severity="error"
                         sx={{ m: 1 }}
                         onClose={handleCloseErrorAlert}

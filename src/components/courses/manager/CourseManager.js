@@ -316,7 +316,7 @@ export default function CourseManager(props) {
                                             onChange={() => {
                                                 setState({ ...state, edit: !state.edit })
                                             }}
-                                            sx={{ height: 40, width: 90 }}
+                                            sx={{ height: 40, width: 90, bgcolor: theme => theme.palette.background.default }}
                                         >
                                             <Edit />
                                         </ToggleButton>
@@ -368,6 +368,13 @@ export default function CourseManager(props) {
                                 </Grid>
                             </Grid>
                         </Grid>
+                        {state.errorMsg === "" ? <></> :
+                            <Grid item>
+                                <Alert variant="filled" severity="error">
+                                    {state.errorMsg}
+                                </Alert>
+                            </Grid>
+                        }
                         <Grid item>
                             <TextField
                                 label="Title"
@@ -470,13 +477,6 @@ export default function CourseManager(props) {
                                 title={"Course has been updated successfully"}
                             />
                         </Grid>
-                        {state.errorMsg === "" ? <></> :
-                            <Grid item>
-                                <Alert variant="outlined" severity="error">
-                                    {state.errorMsg}
-                                </Alert>
-                            </Grid>
-                        }
                     </Grid>
                 </Paper>
             </Grid>

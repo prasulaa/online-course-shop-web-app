@@ -228,7 +228,6 @@ export default function SectionManager(props) {
     return (
         <Paper
             variant='outlined'
-            square
             sx={{ p: 1 }}
         >
             <Grid
@@ -272,7 +271,7 @@ export default function SectionManager(props) {
                 {state.errorMsg === "" ? <></> :
                     <Grid item>
                         <Alert
-                            variant="outlined"
+                            variant="filled"
                             severity="error"
                             onClose={handleCloseErrorAlert}
                         >
@@ -283,7 +282,7 @@ export default function SectionManager(props) {
                 {state.successMsg === "" ? <></> :
                     <Grid item>
                         <Alert
-                            variant="outlined"
+                            variant="filled"
                             severity="success"
                             onClose={handleCloseSuccessAlert}
                         >
@@ -306,7 +305,7 @@ export default function SectionManager(props) {
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton onClick={handleSaveSectionName}>
-                                            <Check />
+                                            <Check sx={{ color: theme => theme.palette.text.secondary }}/>
                                         </IconButton>
                                     </InputAdornment>
                                 }
@@ -324,7 +323,7 @@ export default function SectionManager(props) {
                                 key={lesson.id}
                                 secondaryAction={
                                     <IconButton edge="end" onClick={handleOpenDeleteLessonDialog(lesson.id)}>
-                                        <Delete />
+                                        <Delete sx={{ color: theme => theme.palette.text.secondary }}/>
                                     </IconButton>
                                 }
                             >
@@ -358,7 +357,7 @@ export default function SectionManager(props) {
                                 endAdornment={
                                     <InputAdornment position="end">
                                         <IconButton onClick={handleAddLesson}>
-                                            <Check />
+                                            <Check sx={{ color: theme => theme.palette.text.secondary }}/>
                                         </IconButton>
                                     </InputAdornment>
                                 }

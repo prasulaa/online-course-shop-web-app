@@ -6,7 +6,6 @@ export default function Description(props) {
     return (
         <Paper
             variant='outlined'
-            square
             sx={{ m: 1, p: 1 }}
         >
             <Grid

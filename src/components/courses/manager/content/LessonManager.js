@@ -175,7 +175,7 @@ export default function LessonManager(props) {
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton onClick={handleSaveLessonName}>
-                                        <Check />
+                                        <Check sx={{ color: theme => theme.palette.text.secondary }}/>
                                     </IconButton>
                                 </InputAdornment>
                             }
@@ -186,7 +186,7 @@ export default function LessonManager(props) {
             {state.errorMsg === "" ? <></> :
                 <Grid item>
                     <Alert
-                        variant="outlined"
+                        variant="filled"
                         severity="error"
                         onClose={handleCloseErrorAlert}
                     >
@@ -198,7 +198,7 @@ export default function LessonManager(props) {
             {state.successMsg === "" ? <></> :
                 <Grid item>
                     <Alert
-                        variant="outlined"
+                        variant="filled"
                         severity="success"
                         onClose={handleCloseSuccessAlert}
                     >

@@ -165,6 +165,13 @@ export default function CreateCourse(props) {
                                 Create course
                             </Typography>
                         </Grid>
+                        {state.errorMsg === "" ? <></> :
+                            <Grid item>
+                                <Alert variant="filled" severity="error">
+                                    {state.errorMsg}
+                                </Alert>
+                            </Grid>
+                        }
                         <Grid item>
                             <TextField
                                 label="Title"
@@ -249,13 +256,6 @@ export default function CreateCourse(props) {
                                 Create
                             </Button>
                         </Grid>
-                        {state.errorMsg === "" ? <></> :
-                            <Grid item>
-                                <Alert variant="outlined" severity="error">
-                                    {state.errorMsg}
-                                </Alert>
-                            </Grid>
-                        }
                     </Grid>
                 </Paper>
             </Grid>

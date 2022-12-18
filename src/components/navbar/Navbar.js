@@ -1,14 +1,13 @@
-import { AppBar, Box, Button, Grid, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Grid, Toolbar, Typography, useTheme } from "@mui/material";
 import StoreIcon from '@mui/icons-material/Store';
 import { Link, useNavigate } from "react-router-dom";
 import AccountMenu from "./AccountMenu";
 
 export default function Navbar(props) {
 
-
     return (
         <Box sx={{ flexGrow: 1, pb: 1 }}>
-            <AppBar position="static">
+            <AppBar position="static" sx={{background: theme => theme.palette.background.header}}>
                 <Toolbar>
                     <Grid
                         container
@@ -37,6 +36,7 @@ export default function Navbar(props) {
                                             fontWeight: 700,
                                             letterSpacing: '.3rem',
                                             textDecoration: 'none',
+                                            color: theme => theme.palette.text.primary
                                         }}
                                     >
                                         COURSE SHOP

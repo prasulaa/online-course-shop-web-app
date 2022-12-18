@@ -50,14 +50,14 @@ export default function Filters(props) {
     }
 
     return (
-        <Paper sx={{ p: 1, m: 1 }}>
+        <Paper sx={{ p: 1, m: 1 }} elevation={5}>
             <Grid
                 container
                 direction="column"
                 sx={{ width: "100%" }}
             >
                 <Box sx={{ display: 'flex', alignItems: 'flex-end', width: '100%' }}>
-                    <Search sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                    <Search sx={{ color: theme => theme.palette.text.secondary, mr: 1, my: 0.5 }} />
                     <TextField sx={{width: '100%'}} label="Title" variant="standard" onChange={handleTitle} value={filters.title} />
                 </Box>
 

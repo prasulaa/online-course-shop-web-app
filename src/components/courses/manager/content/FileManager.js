@@ -148,7 +148,7 @@ export default function FileManager(props) {
             {state.errorMsg === "" ? <></> :
                 <Grid item>
                     <Alert
-                        variant="outlined"
+                        variant="filled"
                         severity="error"
                         onClose={handleCloseErrorAlert}
                     >
@@ -159,7 +159,7 @@ export default function FileManager(props) {
             {state.successMsg === "" ? <></> :
                 <Grid item>
                     <Alert
-                        variant="outlined"
+                        variant="filled"
                         severity="success"
                         onClose={handleCloseSuccessAlert}
                     >

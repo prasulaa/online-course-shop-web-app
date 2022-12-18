@@ -1,3 +1,4 @@
+import { Paper, ThemeProvider } from "@mui/material";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import CourseDetails from "./components/courses/details/CourseDetails";
@@ -14,6 +15,7 @@ import Navbar from "./components/navbar/Navbar";
 import ChangePassword from "./components/user/ChangePassword";
 import Login from "./components/user/Login";
 import Register from "./components/user/Register";
+import { theme } from "./theme/theme";
 
 function App() {
   const [isUserLogged, setIsUserLogged] = useState(false);
@@ -29,24 +31,28 @@ function App() {
   useEffect(checkIfUserIsLogged, []);
 
   return (
-    <BrowserRouter>
-      <Navbar isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged}/>
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login setIsUserLogged={setIsUserLogged} />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/released" element={<ReleasedCourses />} />
-        <Route path="/bought" element={<BoughtCourses />} />
-        <Route path="/profile/changepassword" element={<ChangePassword />} />
-        <Route path="/courses/:id/details" element={<CourseDetails isUserLogged={isUserLogged} />} />
-        <Route path="/courses/:id/view" element={<CourseViewer />} />
-        <Route path="/courses/:id/files" element={<CourseFiles />} />
-        <Route path="/courses/create" element={<CreateCourse />} />
-        <Route path="/courses/:id/edit" element={<CourseManager />} />
-        <Route path="/courses/:id/edit/content" element={<ContentManager />} />
-        <Route path="/courses/:id/edit/files" element={<FileManager />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <Paper sx={{ minWidth: '100vh', minHeight: '100vh', background: theme => theme.palette.background.default }}>
+        <BrowserRouter>
+          <Navbar isUserLogged={isUserLogged} setIsUserLogged={setIsUserLogged} />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login setIsUserLogged={setIsUserLogged} />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/released" element={<ReleasedCourses />} />
+            <Route path="/bought" element={<BoughtCourses />} />
+            <Route path="/profile/changepassword" element={<ChangePassword />} />
+            <Route path="/courses/:id/details" element={<CourseDetails isUserLogged={isUserLogged} />} />
+            <Route path="/courses/:id/view" element={<CourseViewer />} />
+            <Route path="/courses/:id/files" element={<CourseFiles />} />
+            <Route path="/courses/create" element={<CreateCourse />} />
+            <Route path="/courses/:id/edit" element={<CourseManager />} />
+            <Route path="/courses/:id/edit/content" element={<ContentManager />} />
+            <Route path="/courses/:id/edit/files" element={<FileManager />} />
+          </Routes>
+        </BrowserRouter>
+      </Paper>
+    </ThemeProvider>
   );
 }
 

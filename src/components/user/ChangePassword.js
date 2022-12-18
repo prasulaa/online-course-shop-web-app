@@ -68,19 +68,19 @@ export default function ChangePassword(props) {
                         </Grid>
                         <Grid item>
                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                <LockOpen sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                <LockOpen sx={{ color: theme => theme.palette.text.secondary, mr: 1, my: 0.5 }} />
                                 <TextField label="Old password" type="password" variant="standard" inputRef={oldPasswordField} />
                             </Box>
                         </Grid>
                         <Grid item>
                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                <Lock sx={{ color: theme => theme.palette.text.secondary, mr: 1, my: 0.5 }} />
                                 <TextField label="New password" type="password" variant="standard" inputRef={newPasswordField} />
                             </Box>
                         </Grid>
                         <Grid item>
                             <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                <Lock sx={{ color: theme => theme.palette.text.secondary, mr: 1, my: 0.5 }} />
                                 <TextField label="New password repeat" type="password" variant="standard" inputRef={newPasswordRepeatField} />
                             </Box>
                         </Grid>
@@ -91,14 +91,14 @@ export default function ChangePassword(props) {
                         </Grid>
                         {state.successMsg === "" ? <></> :
                             <Grid item>
-                                <Alert variant="outlined" severity="success">
+                                <Alert variant="filled" severity="success">
                                     {state.successMsg}
                                 </Alert>
                             </Grid>
                         }
                         {state.errorMsg === "" ? <></> :
                             <Grid item>
-                                <Alert variant="outlined" severity="error">
+                                <Alert variant="filled" severity="error">
                                     {state.errorMsg}
                                 </Alert>
                             </Grid>

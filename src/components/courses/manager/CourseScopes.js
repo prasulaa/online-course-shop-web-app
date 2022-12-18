@@ -25,7 +25,7 @@ export default function CourseScopes(props) {
                                     onClick={props.handleAddScope} 
                                     disabled={props.disabled}
                                 >
-                                    <Add />
+                                    <Add sx={{ color: theme => theme.palette.text.secondary }}/>
                                 </IconButton>
                             </InputAdornment>
                         }
@@ -44,7 +44,7 @@ export default function CourseScopes(props) {
                                     onClick={props.handleDeleteScope(index)}
                                     disabled={props.disabled}
                                 >
-                                    <Delete />
+                                    <Delete sx={{ color: theme => theme.palette.text.secondary }}/>
                                 </IconButton>
                             }
                         >

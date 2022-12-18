@@ -93,13 +93,13 @@ export default function Login(props) {
                             <>
                                 <Grid item>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                        <AccountCircle sx={{ color: theme => theme.palette.text.secondary, mr: 1, my: 0.5 }} />
                                         <TextField label="Username" variant="standard" inputRef={usernameField} />
                                     </Box>
                                 </Grid>
                                 <Grid item>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                        <Lock sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                        <Lock sx={{ color: theme => theme.palette.text.secondary, mr: 1, my: 0.5 }} />
                                         <TextField label="Password" type="password" variant="standard" inputRef={passwordField} />
                                     </Box>
                                 </Grid>
@@ -113,7 +113,7 @@ export default function Login(props) {
                             <>
                                 <Grid item>
                                     <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-                                        <AlternateEmail sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+                                        <AlternateEmail sx={{ color: theme => theme.palette.text.secondary, mr: 1, my: 0.5 }} />
                                         <TextField label="Email" variant="standard" inputRef={emailField} />
                                     </Box>
                                 </Grid>
@@ -126,14 +126,14 @@ export default function Login(props) {
                         }
                         {state.successMsg === "" ? <></> :
                             <Grid item>
-                                <Alert variant="outlined" severity="success">
+                                <Alert variant="filled" severity="success">
                                     {state.successMsg}
                                 </Alert>
                             </Grid>
                         }
                         {state.errorMsg === "" ? <></> :
                             <Grid item>
-                                <Alert variant="outlined" severity="error">
+                                <Alert variant="filled" severity="error">
                                     {state.errorMsg}
                                 </Alert>
                             </Grid>
