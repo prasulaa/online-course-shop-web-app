@@ -167,7 +167,7 @@ function PageChooser(props) {
         >
             <Grid item>
                 <IconButton onClick={props.handlePreviousPage}>
-                    <ArrowBackIosNew sx={{ color: theme => theme.palette.text.secondary }}/>
+                    <ArrowBackIosNew sx={{ color: theme => theme.palette.text.primary }}/>
                 </IconButton>
             </Grid>
             <Grid item>
@@ -177,7 +177,7 @@ function PageChooser(props) {
             </Grid>
             <Grid item>
                 <IconButton onClick={props.handleNextPage}>
-                    <ArrowForwardIos sx={{ color: theme => theme.palette.text.secondary }}/>
+                    <ArrowForwardIos sx={{ color: theme => theme.palette.text.primary }}/>
                 </IconButton>
             </Grid>
         </Grid>

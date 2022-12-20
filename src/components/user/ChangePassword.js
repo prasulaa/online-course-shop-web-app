@@ -39,6 +39,20 @@ export default function ChangePassword(props) {
         }));
     }
 
+    const handleCloseErrorAlert = () => {
+        setState((prevState) => ({
+            ...prevState,
+            errorMsg: ""
+        }))
+    }
+
+    const handleCloseSuccessAlert = () => {
+        setState((prevState) => ({
+            ...prevState,
+            successMsg: ""
+        }))
+    }
+
     return (
         <Grid
             container
@@ -91,14 +105,14 @@ export default function ChangePassword(props) {
                         </Grid>
                         {state.successMsg === "" ? <></> :
                             <Grid item>
-                                <Alert variant="filled" severity="success">
+                                <Alert variant="filled" severity="success" onClose={handleCloseSuccessAlert}>
                                     {state.successMsg}
                                 </Alert>
                             </Grid>
                         }
                         {state.errorMsg === "" ? <></> :
                             <Grid item>
-                                <Alert variant="filled" severity="error">
+                                <Alert variant="filled" severity="error" onClose={handleCloseErrorAlert}>
                                     {state.errorMsg}
                                 </Alert>
                             </Grid>
