@@ -32,7 +32,7 @@ export default function FileManager(props) {
                 }))
             }
         });
-        xhr.open('GET', '/courses/' + id + '/files');
+        xhr.open('GET', 'https://course-shop-restapi.azurewebsites.net/courses/' + id + '/files');
         xhr.send();
     }
 
@@ -43,7 +43,7 @@ export default function FileManager(props) {
                 fileDownload(xhr.response, filename);
             }
         });
-        xhr.open('GET', '/courses/' + id + '/files/' + fileId);
+        xhr.open('GET', 'https://course-shop-restapi.azurewebsites.net/courses/' + id + '/files/' + fileId);
         xhr.responseType = "arraybuffer";
         xhr.send();
     }
@@ -67,7 +67,7 @@ export default function FileManager(props) {
                 }));
             }
         });
-        xhr.open('DELETE', '/courses/' + id + '/files/' + state.deleteFileId);
+        xhr.open('DELETE', 'https://course-shop-restapi.azurewebsites.net/courses/' + id + '/files/' + state.deleteFileId);
         xhr.send();
     }
 
@@ -75,7 +75,7 @@ export default function FileManager(props) {
         var formData = new FormData();
         formData.append("file", e.target.files[0]);
 
-        fetch("/courses/" + id + "/files", {
+        fetch("https://course-shop-restapi.azurewebsites.net/courses/" + id + "/files", {
             method: "post",
             body: formData
         })

@@ -36,7 +36,7 @@ export default function CreateCourse(props) {
                 })
             }
         });
-        xhr.open('POST', "/courses");
+        xhr.open('POST', "https://course-shop-restapi.azurewebsites.net/courses");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             title: titleRef.current.value,
@@ -60,7 +60,7 @@ export default function CreateCourse(props) {
                 });
             }
         });
-        xhr.open('GET', "/categories");
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/categories");
         xhr.send();
     }
 

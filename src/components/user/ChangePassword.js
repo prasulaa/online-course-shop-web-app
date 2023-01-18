@@ -30,7 +30,7 @@ export default function ChangePassword(props) {
                 setState((prevState) => ({ ...prevState, errorMsg: "Unexpected error occurred", successMsg: "" }));
             }
         });
-        xhr.open('POST', "/user/password/change");
+        xhr.open('POST', "https://course-shop-restapi.azurewebsites.net/user/password/change");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             oldPassword: oldPasswordField.current.value,

@@ -34,7 +34,7 @@ export default function SectionManager(props) {
                 }))
             }
         });
-        xhr.open('GET', "/courses/" + id + "/sections/" + props.sectionId);
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + props.sectionId);
         xhr.send();
     }
 
@@ -63,7 +63,7 @@ export default function SectionManager(props) {
                 }))
             }
         });
-        xhr.open('PUT', "/courses/" + id + "/sections/" + props.sectionId);
+        xhr.open('PUT', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + props.sectionId);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             name: state.section.name
@@ -93,7 +93,7 @@ export default function SectionManager(props) {
                 }))
             }
         });
-        xhr.open('DELETE', "/courses/" + id + "/sections/" + props.sectionId);
+        xhr.open('DELETE', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + props.sectionId);
         xhr.send();
     }
 
@@ -123,7 +123,7 @@ export default function SectionManager(props) {
             }
             handleCloseDeleteLessonDialog();
         });
-        xhr.open('DELETE', "/courses/" + id + "/sections/" + props.sectionId + "/lessons/" + state.deleteLessonId);
+        xhr.open('DELETE', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + props.sectionId + "/lessons/" + state.deleteLessonId);
         xhr.send();
     }
 
@@ -154,7 +154,7 @@ export default function SectionManager(props) {
                 }))
             }
         });
-        xhr.open('POST', "/courses/" + id + "/sections/" + props.sectionId + "/lessons");
+        xhr.open('POST', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + props.sectionId + "/lessons");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             name: addLessonRef.current.value,

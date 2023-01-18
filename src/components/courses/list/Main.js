@@ -46,7 +46,7 @@ export default function Main(props) {
                 setCourses(response);
             }
         });
-        xhr.open('GET', "/courses" + getCoursesParams());
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses" + getCoursesParams());
         xhr.send();
     };
 
@@ -58,7 +58,7 @@ export default function Main(props) {
                 setCategories(response);
             }
         });
-        xhr.open('GET', "/categories");
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/categories");
         xhr.send();
     }
 

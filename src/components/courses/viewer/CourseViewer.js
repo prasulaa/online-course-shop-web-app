@@ -43,7 +43,7 @@ export default function CourseViewer(props) {
                 setCourse(response);
             }
         });
-        xhr.open('GET', "/courses/" + id + "/details");
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/details");
         xhr.send();
     }
 
@@ -58,7 +58,7 @@ export default function CourseViewer(props) {
                 setViewedLesson(response);
             }
         });
-        xhr.open('GET', "/courses/" + id + "/sections/" + sectionId + "/lessons/" + lessonId);
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + sectionId + "/lessons/" + lessonId);
         xhr.send();
     }
 

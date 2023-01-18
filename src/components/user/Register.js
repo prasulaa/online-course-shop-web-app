@@ -39,7 +39,7 @@ function RegisterForm(props) {
                 setErrorMsg("Unxpected error occurred");
             }
         });
-        xhr.open('POST', "/register");
+        xhr.open('POST', "https://course-shop-restapi.azurewebsites.net/register");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             username: usernameField.current.value,

@@ -27,7 +27,7 @@ export default function AccountMenu(props) {
                 navigate("/");
             }
         });
-        xhr.open('POST', "/user/logout");
+        xhr.open('POST', "https://course-shop-restapi.azurewebsites.net/user/logout");
         xhr.send();
         handleClose();
     }

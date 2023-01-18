@@ -19,7 +19,7 @@ export default function Header(props) {
                     }
                 }
             });
-            xhr.open('GET', "/courses/" + type);
+            xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses/" + type);
             xhr.send();
         }
     }
@@ -36,7 +36,7 @@ export default function Header(props) {
                     setOwned(true);
                 }
             });
-            xhr.open('POST', "/courses/" + props.id + "/buy");
+            xhr.open('POST', "https://course-shop-restapi.azurewebsites.net/courses/" + props.id + "/buy");
             xhr.send();
         } else {
             navigate("/login");

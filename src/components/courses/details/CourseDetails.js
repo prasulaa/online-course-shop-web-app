@@ -30,7 +30,7 @@ export default function CourseDetails(props) {
                 setCourse(response);
             }
         });
-        xhr.open('GET', "/courses/" + id + "/details");
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/details");
         xhr.send();
     }
 

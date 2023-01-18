@@ -17,7 +17,7 @@ export default function CourseFiles(props) {
                 setFiles(response);
             }
         });
-        xhr.open('GET', '/courses/' + id + '/files');
+        xhr.open('GET', 'https://course-shop-restapi.azurewebsites.net/courses/' + id + '/files');
         xhr.send();
     }
 
@@ -28,7 +28,7 @@ export default function CourseFiles(props) {
                 fileDownload(xhr.response, filename);
             }
         });
-        xhr.open('GET', '/courses/' + id + '/files/' + fileId);
+        xhr.open('GET', 'https://course-shop-restapi.azurewebsites.net/courses/' + id + '/files/' + fileId);
         xhr.responseType = "arraybuffer";
         xhr.send();
     }

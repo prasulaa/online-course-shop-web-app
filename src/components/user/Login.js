@@ -27,7 +27,7 @@ export default function Login(props) {
                 setState((prevState) => ({ ...prevState, errorMsg: response.message }));
             }
         });
-        xhr.open('POST', "/login");
+        xhr.open('POST', "https://course-shop-restapi.azurewebsites.net/login");
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             username: usernameField.current.value,
@@ -49,7 +49,7 @@ export default function Login(props) {
                 setState((prevState) => ({ ...prevState, errorMsg: response.message }));
             }
         });
-        xhr.open('POST', "/user/password/reset?email=" + emailField.current.value);
+        xhr.open('POST', "https://course-shop-restapi.azurewebsites.net/user/password/reset?email=" + emailField.current.value);
         xhr.send();
     }
 

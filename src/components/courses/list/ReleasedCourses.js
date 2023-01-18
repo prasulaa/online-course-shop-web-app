@@ -13,7 +13,7 @@ export default function ReleasedCourses(props) {
                 setCourses(response);
             }
         });
-        xhr.open('GET', "/courses/released");
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses/released");
         xhr.send();
     }
     

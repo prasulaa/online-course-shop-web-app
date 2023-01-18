@@ -30,7 +30,7 @@ export default function LessonManager(props) {
                 }))
             }
         });
-        xhr.open('GET', "/courses/" + id + "/sections/" + props.sectionId + "/lessons/" + props.lessonId);
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + props.sectionId + "/lessons/" + props.lessonId);
         xhr.send();
     }
 
@@ -58,7 +58,7 @@ export default function LessonManager(props) {
                 }))
             }
         });
-        xhr.open('PUT', "/courses/" + id + "/sections/" + props.sectionId + "/lessons/" + props.lessonId);
+        xhr.open('PUT', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + props.sectionId + "/lessons/" + props.lessonId);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             data: data
@@ -90,7 +90,7 @@ export default function LessonManager(props) {
                 }))
             }
         });
-        xhr.open('PUT', "/courses/" + id + "/sections/" + props.sectionId + "/lessons/" + props.lessonId);
+        xhr.open('PUT', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/sections/" + props.sectionId + "/lessons/" + props.lessonId);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             name: state.lesson.name

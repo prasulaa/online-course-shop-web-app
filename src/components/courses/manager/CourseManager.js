@@ -47,7 +47,7 @@ export default function CourseManager(props) {
                 })
             }
         });
-        xhr.open('PUT', "/courses/" + id);
+        xhr.open('PUT', "https://course-shop-restapi.azurewebsites.net/courses/" + id);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(JSON.stringify({
             title: state.title,
@@ -107,7 +107,7 @@ export default function CourseManager(props) {
                 });
             }
         });
-        xhr.open('GET', "/courses/" + id + "/details");
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/courses/" + id + "/details");
         xhr.send();
     }
 
@@ -125,7 +125,7 @@ export default function CourseManager(props) {
                 getCourseDetails();
             }
         });
-        xhr.open('GET', "/categories");
+        xhr.open('GET', "https://course-shop-restapi.azurewebsites.net/categories");
         xhr.send();
     }
 
@@ -259,7 +259,7 @@ export default function CourseManager(props) {
                 })
             }
         });
-        xhr.open('DELETE', "/courses/" + id);
+        xhr.open('DELETE', "https://course-shop-restapi.azurewebsites.net/courses/" + id);
         xhr.send();
     }
 
