@@ -111,7 +111,7 @@ export default function CourseManager(props) {
         xhr.send();
     }
 
-    const getCategories = () => {
+    const getCategoriesAndCourseDetails = () => {
         var xhr = new XMLHttpRequest();
         xhr.addEventListener('load', () => {
             if (xhr.status === 200) {
@@ -122,15 +122,11 @@ export default function CourseManager(props) {
                         categories: response
                     }
                 });
+                getCourseDetails();
             }
         });
         xhr.open('GET', "/categories");
         xhr.send();
-    }
-
-    const initState = () => {
-        getCategories();
-        getCourseDetails();
     }
 
     const handleTitle = (e) => {
@@ -267,7 +263,7 @@ export default function CourseManager(props) {
         xhr.send();
     }
 
-    useEffect(initState, []);
+    useEffect(getCategoriesAndCourseDetails, []);
 
     return (
         <Grid
